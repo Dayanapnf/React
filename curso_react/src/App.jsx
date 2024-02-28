@@ -9,7 +9,6 @@ function App() {
       {/* <FirstComponent /> */}
       <TemplateExpressions />
       <MyComponent />
-      dvdv
     </div>
   );
 }
