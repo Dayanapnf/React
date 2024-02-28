@@ -20,6 +20,11 @@
 
 .container-bg{
   background: #61dafbaa;
+  padding: 20px;
+  border-radius: 20px;
+}
+.btn{
+  margin: 20px;
 }
 
 @keyframes logo-spin {
