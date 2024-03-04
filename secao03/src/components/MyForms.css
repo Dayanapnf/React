@@ -1,0 +1,16 @@
+form{
+  width: auto;
+  height: auto;
+  background: floralwhite;
+  padding: 20px;
+  border-radius: 20px;
+
+}
+input,textarea,select{
+  display: block;
+  margin-bottom: 10px;
+
+}
+.inputbtn{
+  background: cadetblue;
+}

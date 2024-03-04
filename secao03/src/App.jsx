@@ -5,6 +5,7 @@ import ListRender from './components/ListRender';
 import CarDetails from './components/CarDetails';
 import Fragments from './components/Fragments';
 import UserDetails from './components/UserDetails';
+import MyForms from './components/MyForms';
 
 function App() {
   const users = [
@@ -19,7 +20,7 @@ function App() {
   ];
   return (
     <div>
-      <h1>olá</h1>
+      {/* <h1>olá</h1>
       <img src={ImgReact} alt="react" />
       <ManageData />
       <ListRender />
@@ -34,7 +35,8 @@ function App() {
       <Fragments propsfragments="teste" />
       {users.map((user) => (
         <UserDetails key={user.id} name={user.name} age={user.age} />
-      ))}
+      ))} */}
+      <MyForms />
     </div>
   );
 }
