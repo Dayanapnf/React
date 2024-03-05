@@ -36,7 +36,7 @@ function App() {
       {users.map((user) => (
         <UserDetails key={user.id} name={user.name} age={user.age} />
       ))} */}
-      <MyForms />
+      <MyForms initialName={'joão'} initialEmail={'joao@gmail.com'} />
     </div>
   );
 }
