@@ -36,7 +36,14 @@ function App() {
       {users.map((user) => (
         <UserDetails key={user.id} name={user.name} age={user.age} />
       ))} */}
-      <MyForms initialName={'joão'} initialEmail={'joao@gmail.com'} />
+      <MyForms
+        user={{
+          name: 'joão',
+          email: 'joao@gmail.com',
+          bio: 'sou programadora',
+          role: 'editor',
+        }}
+      />
     </div>
   );
 }

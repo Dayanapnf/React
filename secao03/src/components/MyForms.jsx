@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './MyForms.css';
 
-const MyForms = ({ initialName, initialEmail }) => {
-  const [name, setName] = useState(initialName ? initialName : '');
-  const [email, setEmail] = useState(initialEmail ? initialEmail : '');
-  const [bio, setBio] = useState('');
+const MyForms = ({ user }) => {
+  const [name, setName] = useState(user ? user.name : '');
+  const [email, setEmail] = useState(user ? user.email : '');
+  const [bio, setBio] = useState(user ? user.bio : '');
+  const [role, setRole] = useState(user ? user.role : '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ const MyForms = ({ initialName, initialEmail }) => {
     setName('');
     setEmail('');
     setBio('');
+    setRole('user');
   };
 
   return (
@@ -45,7 +47,18 @@ const MyForms = ({ initialName, initialEmail }) => {
             value={bio}
           ></textarea>
         </label>
-
+        <label>
+          <span>função no sistema</span>
+          <select
+            name="role"
+            onChange={(e) => setRole(e.target.value)}
+            value={role}
+          >
+            <option value="user">Usuário</option>
+            <option value="editor">Editor</option>
+            <option value="adm">Administrador</option>
+          </select>
+        </label>
         <input type="submit" value="Enviar" className="inputbtn" />
       </form>
     </div>
