@@ -4,6 +4,7 @@ import './MyForms.css';
 const MyForms = ({ initialName, initialEmail }) => {
   const [name, setName] = useState(initialName ? initialName : '');
   const [email, setEmail] = useState(initialEmail ? initialEmail : '');
+  const [bio, setBio] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +13,7 @@ const MyForms = ({ initialName, initialEmail }) => {
     console.log('Enviando formulário');
     setName('');
     setEmail('');
+    setBio('');
   };
 
   return (
@@ -34,6 +36,15 @@ const MyForms = ({ initialName, initialEmail }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label>
+          <span>Bio:</span>
+          <textarea
+            name="bio"
+            placeholder="Descrição do usuário"
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
+          ></textarea>
+        </label>
 
         <input type="submit" value="Enviar" className="inputbtn" />
       </form>
