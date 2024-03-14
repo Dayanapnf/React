@@ -1,46 +1,48 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { useState } from 'react';
+import { useFetch } from './hooks/useFetch';
+
 const url = 'http://localhost:3000/products';
+
 function App() {
-  const [produtos, setProdutos] = useState([]);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
-  //1. resgatando os dados
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(url);
-      const data = await res.json();
-      setProdutos(data);
-    }
-    fetchData();
-  }, []);
 
-  //2. add produtos
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const produtos = {
+    const product = {
       name,
       price,
     };
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'aplication/json ',
-      },
-      body: JSON.stringify(produtos),
-    });
+    httpConfig(product, 'POST');
+    // Limpar os campos de entrada
+    setName('');
+    setPrice('');
   };
+
+  const handleRemove = (id) => {
+    httpConfig(id, 'DELETE');
+  };
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
-      <ul style={{ listStyle: 'none' }}>
-        {produtos.map((produtos) => (
-          <li key={produtos.id}>
-            {produtos.name} - R$: {produtos.price}
-          </li>
-        ))}
+      {loading && <p>Carregando dados...</p>}
+      {error && <p>{error}</p>}
+      <ul>
+        {items &&
+          items.map((product) => (
+            <li key={product.id}>
+              {product.name} - R$: {product.price}
+              <button onClick={() => handleRemove(product.id)}>Excluir</button>
+            </li>
+          ))}
       </ul>
+
       <div className="add-product">
+        <p>Adicionar produto:</p>
         <form onSubmit={handleSubmit}>
           <label>
             Nome:
@@ -52,7 +54,7 @@ function App() {
             />
           </label>
           <label>
-            Nome:
+            Preço:
             <input
               type="number"
               value={price}
