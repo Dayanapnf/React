@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Navbar from './components/Navbar';
+import Info from './pages/Info';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           //rota dinamica
           <Route path="/products/:id" element={<Products />} />
+          <Route path="/products/:id/info" element={<Info />} />
         </Routes>
       </BrowserRouter>
     </div>
