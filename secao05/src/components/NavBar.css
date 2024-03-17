@@ -1,0 +1,17 @@
+Nav{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav a {
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+nav a:hover{
+  color:#ccc
+}
